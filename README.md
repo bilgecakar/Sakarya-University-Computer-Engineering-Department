@@ -2,7 +2,7 @@
 
 ![29493](https://user-images.githubusercontent.com/36795459/158806653-0c476a5e-b96d-4bff-824f-15f6ac3de028.jpg)
 
- 2017-2021 yılları arasında Sakarya Üniversitesi Bilgisayar Mühendisliği Bölümü ders notları, sınavlar, kod örneklerini içermektedir. 
+ <i>2017-2021 yılları arasında Sakarya Üniversitesi Bilgisayar Mühendisliği Bölümü ders notları, sınavlar, kod örneklerini içermektedir. </i> </br></br>
 
 ## TARİHÇE
 <p align = "justify">1994 yılında eğitim-öğretime başlayan bölümümüz lisans, yüksek lisans ve doktora programlarının yanı sıra tamamen uzaktan eğitimle verdiğimiz e-Bilişim Teknolojileri Tezsiz Yüksek Lisans programıyla da değişik meslek mezunlarını bilişim uzmanı yapmaya devam edeceğiz.Üniversite-sanayi işbirliğinde Türkiye'de devrim sayılabilecek bir projeyi Ford Otosan'la 2008 Nisan ayında başlattık ve büyük bir başarıyla sürdürüyoruz. Gelişen eğitim kadromuz ile arka arkaya 2 yıl Bilgisayar Mühendisliği bölümleri arasında öğretim elemanı başına en fazla SCI yayın yapma başarılarını da göstermiştir.Sapanca gölünün eşsiz manzarası ve geniş yurt imkanlarıyla kampüsümüz, hayatınızın önemli yıllarının bir kısmını geçirirken mutlu olmanızı da sağlayacaktır. </p>
