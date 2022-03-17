@@ -1,0 +1,82 @@
+YIÐIN
+Bütün programlama dilleri içerisinde kullanýlýr.Ýþlemcinin bile içerisinde gömülüdür.
+
+Bilgisayar bilimlerinde  son eklenen verinin ilk çýkarýldýðý veri türüdür.
+Kutu gibi düþünebiliriz. Kitaplarý kutuya koyalým 
+Kitaplar üst üste dizilince kutudan cýkartmak istediðimizde en son koyduðumuz kitap ilk çýkacak daha sonra ondan..
+Stack elemanlarý hafýzada saklar ve elemanlar art arta yerleþir. Dizi düþünelim ilk eleman ilk yerleþio sýrayla üst üste
+yerleþio çýkarken ki en sondan 0. elemana kadar cýkýyor. Dizinin türü verinin türüne baðlýdýr.
+int veya nesnede olabilir.
+
+STACK SINIFI VE FONKSÝYONLAR
+
+#include<iostream>
+using namespace std;
+const int  STACK_MAX = 10;
+class Stack
+{
+public:
+	Stack()
+	{
+		Top = 0;
+	}
+	bool Push(int item)//Yýðýna eleman eklemek için kullanýlýr.Neden bool cünkü her zaman ekleyemeyebiliriz.
+	{
+		//ilk önce yiðin dolumu kontrol etmemiz gerekiyor.Dinamik yýðýn olmadýðý için kendini geniþletemiyor.
+		if (Top >=STACK_MAX) return false;
+		D[Top] = item;
+		Top++;
+		return true;
+	}
+	bool Pop(int& item)//Son eklenen elemaný cýkarýr.Dönüþ deðerini parametreden alýr.
+	{
+		//Yigin boþmu onu kontorl etmemiz gerekiyor.
+		if (Top == 0) return false;
+		//Top elemaný   boþ hücreyi gösterdiði için Top-1 son eklenen elemandýr.
+		item = D[Top - 1];
+		Top--;
+		return true;
+		//Top private olmasaydý kullanýcý top u deðiþtirip stacki patlatabilirdi.
+	}
+	bool Pop(int*pitem)//Üsttekinin farklý Syntax halidir.
+	{
+
+	}
+	bool isEmpty()//Boþmu deðil mi onu döndürüyor.
+	{
+		if (Top <= 0)
+			return false;
+		return true;
+	}
+	bool TopRet(int &item)//Pop tan farklý olan son elemaný cýkarmadan kopyasýný alýp bize getiriyor.
+	{
+		// Yigin boþmu onu kontorl etmemiz gerekiyor.
+		if (Top == 0) return false;
+		//Top elemaný   boþ hücreyi gösterdiði için Top-1 son eklenen elemandýr.
+		item = D[Top - 1];
+		return true;
+		//Top private olmasaydý kullanýcý top u deðiþtirip stacki patlatabilirdi.
+	}
+	bool TopRet(int*pitem);
+	void WriteAll()//Bütün elemanlarý ekrana yazýyor.
+	{
+		int temp;
+		while (Pop(temp) != false)//Stack boþalana kadar while döngüsüyle tüm elemanlarý ekrana yazdiriyoruz.
+		{
+			cout << temp;
+		}
+	}
+	void DeleteAll()//Bütün elemanlarý siliyor.
+	{
+		Top = 0;
+	}
+private:
+	int D[STACK_MAX];//hafýza alaný olarak kullanýlýr.
+	unsigned int  Top;//Yýðýna eklenecek olan verinin hangi hücreye yerleþeceði tutar.Baþlangýçta hiç eleman
+	//olmadýðý için top 0 gösterecektir.Bu durum yýðýnýn boþ olduðunu göstermektedir.
+	//top 10 ise dolu anlamýna gelmektedir.
+};
+int main()
+{
+	
+}

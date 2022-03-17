@@ -1,0 +1,63 @@
+#ifndef newStack_hpp
+#define newStack_hpp
+#include<iostream>
+#include"NodeStack.hpp"
+using namespace std;
+template<typename Nesne>
+class newStack
+{
+private:
+	NodeStack<Nesne>*stackHeap;
+public:
+	newStack()
+	{
+		//Oluþtuðu ilk durumda hiçbir eleman olmadýðý için NULL deðerini göstermelidir.
+		stackHead = NULL;
+		bool isEmpty() const{
+			return stackHeap == NULL;
+		}
+	bool isEmpty const()
+	{
+		return stackHead == NULL;
+	}
+	//Yýðýta eleman eklerken stackheap gelen bu yeni dügümü gösterirken yeni dügümün ilerisi daha önceki  yigiti gösterir.
+	//Bu islemi Nodestack yapýcý metodundan fayalaranak yapabiliriz.
+	void push (const Nesne& eleman)
+	{
+		stackHeap = new NodeStack<Nesne>(eleman, stackHeap);
+		//Burasý cok onemli.....
+	}
+	void pop()//Listenin basindaki dügümü silme islemidir.
+	{
+		if (isEmpty())
+		{
+			return;
+		}
+		else
+		{
+			NodeStack<Nesne>*silinecek = stackHeap;
+			stackHeap = stackHeap->next;
+			delete silinecek;
+		}
+	}
+	//top islemi listenin baisndaki elemanýn ne oldugunu gösterme islemidir.
+	const Nesne& top()
+	{
+		if (isEmpty())
+		{
+		}
+		else
+		{
+			return stackhHeap->staff;
+		}
+	}
+	void makeEmpty(){
+		while (!isEmpty())
+			pop();
+	}
+	~newStack(){
+		makeEmpty();
+	}
+};
+#endif
+

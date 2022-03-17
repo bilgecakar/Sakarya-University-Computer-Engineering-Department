@@ -1,0 +1,114 @@
+#include<iostream>
+using namespace std;
+class Dugum{
+public:
+	Dugum *pSonraki;//ÝÞARETÇÝ TÜRÜ DÜGÜM TÜRÜNDEN ÇÜNKÜ  BU ÝÞARETÇÝ BAÞKA BÝR ÝÞARETÇÝNÝN ADRESÝNÝ TUTMAKTADIR.
+	int veri;
+	Dugum()
+	{
+		pSonraki = NULL;
+	}
+	//Sona eleman ekleme
+	 void sonaEkle(Dugum*pBas, Dugum*pY)//ilk paremetre listenin ilk dugumunun adresini tutacak ikinci paremetresi Yeni eklenecek dugumun adresi
+	{
+		
+		 while (pBas->pSonraki != NULL)
+		 {
+			 pBas = pBas->pSonraki;
+		 }//pBas Son DUGUMU GÖSTERDÝÐÝNDE döngüden çýkar
+		 //eski son duðumu  baðlamam gerkiyor.
+		 pBas->pSonraki = pY;//Eklenmeden önceki deðer  artýk son deðer olan null deðil en son eleman olan py nin adresini tutaar.
+	}
+	 Dugum*sondanCýkar(Dugum*pBas)
+	 {
+		 //cýkarmam için sondan bir önceki düðümü null yapmam yetiyor.Ama Baðý koparýnca  bir daha oluþturamayýz bunu silmemiz gerekir.
+		 //dügümleri cýkardýktan sonra çýkardýðý düðümün adreisni göstermesi lazým.
+		 while (pBas - pSonraki->pSonraki !=NULL)//Sondan bir önceki elemanýn gösterir
+		 {
+			 pBas = pBas->pSonraki;
+		 }
+		 Dugum*pTemp = pBas -> pSonraki;
+		 pBas->pSonraki = NULL;
+		 /*
+		 Burada þunu idrak etmeliyiz.pSonraki neydi bir sonraki elemanýn adresiydi.Yani en sondaki pTemp NULL adres tutuyordu.
+		 Silme iþlemi sonucunda ne olmasý gerekiyor sildikten sonra sildiðimizden bir önceki eleman artýk Sildiðimiz verinin adresini
+		 tutmamasý gerektiði için null deðer tutacaktýr.Bu yüzden sondan bi önceki elemana eriþmemiz gerekiyor.
+		 Bunu yaptýk ve onu null a çevirdik.
+		 */
+		 return pTemp;	
+	 }
+	 void ArayaEkle(Dugum*pBas, Dugum*pY, int index){
+		 for (int i = 0; i < index-2; i++)
+		 {
+			 pBas = pBas->pSonraki;
+		 }
+		 pY -> pSonraki = pBas -> pSonraki;
+		 pBas->pSonraki = pY;
+		 /*
+		Burada biz ilk önce girilen indeksteki düðüme eriþtik.Daha önce mesela 4 . indeks  5.indeksin adresini tutuyor.
+		Araya eklicemiz indeks te 4.indeks olcak ve 5. indeksin  adresini tutmalýdýr.Eski 4.indeksi kaybetmemis gerekir.
+		 */
+
+	 }
+	 Dugum*AradanCikar(Dugum*pBas, int Index)
+	 {
+		 for (int i = 0; i < Index - 2;i++)
+		 {
+			 pBas = pBas->pSonraki;//Silincek elemana eriþiyoruz.
+		 }
+		 Dugum*Ptemp = pBas->pSonraki;
+		 pBas->pSonraki = pBas->pSonraki->pSonraki;//Silincek elemanýn tuttuðu adres o adresin tuttuðunun adresine eþitleniyor.
+		 /*
+		 Mesela 4. elemaný silcem for da p3 ün sonraki elemanýna yani p4 ün adresine ulaþýyorum.
+		 Sonra
+		 p3 ün sonraki elemanýný p4 ün sonraki elamanýna baðlýyorum boþta kalan düðümü temple fýrlatýyorum.
+		 */
+		 return Ptemp;
+	 }
+};
+int main()
+{
+	//Baðlý listeler
+	//Þu ana kadar  geliþtirdiðimiz veri yapýsýnda  hafýzada ardýþýk olarak yerleþtirilmekteydi.
+	//Mesela yýðýn bir dizi gibiydi elemanlar hep ard arda geliyordu.Bunun bir dezavantajý var araya eleman eklemek için
+	//geri kalan bütün elemanlarý bir arttýrmamýz lazýmdý  diðer dezavantajý eleman alamýosan yeni bir alan almamýz gerekiyordu 
+	//bu iþlemler büyük diziler düþünüldüðünde baya ergonomik oluyordu. avantajý hýzlý tarama yapmaktý.
+	//TEK YÖNLÜ BAÐLI LÝSTE
+	//Baðlý listelerde hücreler arasýnda ardýþýklýk yoktur.Rastgele yerleþiyor.
+	//Bunun yerine her hücre  kendisinden sonraki  hücrenin adresini tutmaktadýr.
+	//Hücreler verinin yaný sýra kendisinden sonraki hücrenin adresini tutmaktadýr. Ýki yönlü baðlý listelerde hem kendinsinden sonraki
+	//hemde kendisinden öncekinin adresini tutmaktadýr.
+	//Baðlý listelerden bahsederken her bir hücreye DÜÐÜM adýyla adlandýrýr.
+	//Düðümler iki parçadan oluþuyor biri veri diðeri pointer(adresi) tutulur.
+	//Veri sýnýf türünden ve temel veri tiplerinden olabilmektedir.
+	//Butun dugumler new ile oluþturuluyor.new le oluþturmamýmýzn nedeni heap te oluþturduðumuz için.
+	//Dugum*pYeni = new Dugum();
+	//NULL pointer ýn hiçbiryer göstermediði anlamýna geliyor.
+	Dugum*pYeni = new Dugum();//pyeni yeni olusturulan nesnenin adresini tutar.
+	Dugum*pYeni2 = new Dugum();
+	Dugum*pYeni3 = new Dugum();
+	Dugum*pYeni4 = new Dugum();
+	pYeni->veri = 1;//Veriyi 1 yap demektir.
+	pYeni2->veri = 4;
+	pYeni3->veri = 5;
+	pYeni4->veri = 9;
+	//Bunlarý arasýndaki bagý kuralým.
+	pYeni->pSonraki = pYeni2;
+	pYeni2->pSonraki = pYeni3;
+	pYeni3->pSonraki = pYeni4;
+	//bag kuruldu;Bu el ele tutuþan insanlara benziyor.
+	//Listenin baþ pointerý çok önemlidir.
+	//Son düðümün pSonraki elemaný NULL a sahiptir.
+	//Biz bir döngüyle NULL a kadar gezdirebiliriz.
+	//Bunu yapabilmem için pYeni pointerýmýn deðerini bir taþýyýcýya aktarmam lazým
+	Dugum*pTemp = pYeni;//Yedek aldým.
+	while (pTemp!=NULL)//son dugume kadar gider.
+	{
+		cout << "pTemp=" << pTemp->veri<<endl;
+		pTemp = pTemp->pSonraki;//Ptemp bir sonraki baðlý olduðunu gösterir.
+	}//Bu durumda son düðüm ortaya çýkmaz.
+	//while(pTemp!=NULL) BÖYLE YAPARSAK SON ELEMANDA YAZILIR.(ONCEKÝ HALÝ=pTemp->pSonraki == NULL)
+	Dugum*pYeni5 = new Dugum();
+	pYeni5->veri = 99;
+	
+}

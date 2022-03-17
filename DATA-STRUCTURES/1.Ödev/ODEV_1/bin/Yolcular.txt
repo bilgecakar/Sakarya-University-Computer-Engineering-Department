@@ -1,0 +1,21 @@
+Ali 6
+Busra 4
+Ahmet 1
+Leyla 10
+Sevil 3
+Veli 4
+Fatih 7
+Kadir 5
+Ayse 9
+Musa 8
+
+Volkan 1
+Osman 7
+Derya 3
+Bekir 10
+Murat 6
+Huseyin 2
+Ceren 8
+Olcay 4
+Asli 5
+Beyza 9

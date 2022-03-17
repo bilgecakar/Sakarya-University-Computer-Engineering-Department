@@ -1,0 +1,81 @@
+#ifndef StackDizi_hpp
+#define StackDizi_hpp
+#include<iostream>
+using namespace std;
+template<typename Nesne>
+class Stack{
+public:
+	Nesne*staff;
+	int stackHead;
+	int staffN;
+	int capacity;//Dizinin alabileceði max eleman sayýsýný gösterecektir.Yer ac cagirildiginde
+	//varolan limitin iki katý kadar yer acilacaktir.
+	bool isFull()
+	{
+		return staffN == capacity;
+	}
+	void yerAc(int boyut)
+	{
+		Nesne*tmp = new Nesne[boyut];
+		for (int i = 0; i < staffN; i++)
+			tmp[i] = staff[i];
+		if (staff != NULL)
+			delete[] staff;
+		staff = tmp;
+		capacity = boyut;
+	}
+	Stack()//Yeni bir nesne olusturulduðunda dizi  göstericisi NULL'u gösterecek sekilde nesneyi olusturur.
+	{
+		staff = NULL;
+		capacity = 0;
+		staffN = 0;
+		stackHead = -1;
+	}
+	bool isEmpty()
+	{
+		return stackHead == -1;
+	}
+	void push(const Nesne&newStaff)
+	{
+		if (isFull())
+		{
+			yerAc(max(1, 2 * capacity));
+		}
+		stackHead++;
+		staff[stackHead] = newStaff;
+		staffN++;
+	}
+	void pop()
+	{
+		if (isEmpty())//boþmu
+		{
+			cout << "Stack is empty !" << endl;
+			return 0;
+		}
+		stackHead--;//Tek yapmamýz gereken bir azaltmak
+		staffN--;
+	}
+	const Nesne&top()//Sýradaki elemaný görmek isteyebilir.Çýkarma islemi yapmadan.
+	{
+		if (isEmpty())
+		{
+			cout << "Stack is empty!" << endl;
+			return 0;
+		}
+		return staff[stackHead];
+	}
+	void makeEmpty()//Yýðýt ile iþ bittiðinde yýðýtý ilk haline çevirip belleðe geri iade eder.
+	{
+		stackHead = -1;
+		staffN = 0;
+		capacity = 0;
+		if (staff != NULL)
+			delete[] staff;
+	}
+	~Stack(){
+		makeEmpty();
+	}
+};
+
+#endif 
+

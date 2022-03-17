@@ -1,0 +1,535 @@
+#include<iostream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	/*
+	//VEKTORLER ÝÞARET OPARATÖRLERÝ
+	//= OPERATORU
+	/*vector<int>eski(10, 3);
+	vector < int> yeni;
+	yeni = eski;//Kopyalama iþlemi yaptý.
+	//*/
+	//[] istenilen sýradaki elamaný döndürür ve deðiþtirebiliriz.
+	/*
+	vector<int>deneme(3, 45);
+	cout << setw(20) << "deneme[0]=" << deneme[0] << endl;
+	cout << setw(20) << "deneme[1]=" << deneme[1] << endl;
+	cout << setw(20) << "deneme[2]=" << deneme[2] << endl;
+
+	//NOT VEKTORUN KAÇ ELEMANLI OLDUÐUNU ÝNT TÜRÜNDEN DÖNDÜREBÝLÝRÝZ.
+	cout << setw(20) << "Vektorun eleman sayisi:" << deneme.size()<< endl;
+	// 1 tane eleaman oluþtur ve o 1 elemana 25 deðerini ata
+	vector<int> dene(1, 25);
+
+	int kapasite = dene.capacity();
+
+	cout << "'dene' capacity..: " << kapasite << endl;
+
+	system("PAUSE");
+	return 0;
+	//Not: capacity en son kaldýðý BÜYÜK te kalýr ilerde bunu C++11 destekli bir fonskiyonla ayarlayabileceðiz.
+	//.max_size=Belirtilen türde bilgisayarýmýzda ne kadar alan olduðunu bilebiliriz.
+	vector<int>alan;
+	int alanbyte = alan.max_size();
+	cout << alanbyte << endl;
+	*/
+		/* < operatörü vectorlerde deðiþiktir(deðildirde öyle diyebiliriz) yani
+		hangi vectorun elemean sayýsý fazlaysa o küçüktür */
+
+	/*
+	vector<int> dene(5, 23);
+		vector<int> yeni(3, 50);
+
+		// 'dene' vectörü 'yeni' vectöründen üçük ise:
+		if (dene < yeni)
+			cout << "'dene' vectorunun eleman sayisi 'yeni' vectorunun eleman sayisindan fazladir" << endl;
+
+		system("PAUSE");
+		return 0;
+	*/
+	//PUSHBACK,BEGÝN,END,FRONT,BACK
+	//push_back()==Vektorun sonuna veri eklemeye yarar yani her girdiðinde  sonuna ekler ve bi geniþler
+	/*
+	int main()
+{
+vector<int> dene;
+ 
+int ekle = 0;
+ 
+// ekle++ küçük olduðu sürece 25'ten dön
+while(ekle++ < 25)
+{
+// her buraya geldiðinde 'ekle' deðiþkenini 'dene' vectörünün
+// sonuna ekleyecek
+dene.push_back(ekle);
+}
+ 
+// .size() ile vectörün eleman sayýsý dönüyor ve
+// biz o dönen deðeri eSayisi deðiþkenine atýyoruz
+int eSayisi = dene.size();
+ 
+for(int i = 0; i < eSayisi; i++)
+{
+cout << "dene[" << i << "]..: " << dene[i] << endl;
+}
+ 
+system("PAUSE");
+return 0;
+
+
+
+
+
+
+
+
+
+vector<int> dene;
+
+int ekle = 0;
+
+// bu 'ekle' deðiþkenine eklenen sayý olduðu sürece döner
+while(cin >> ekle)
+{
+// eðer 'ekle' deðiþkeninin 2'ye bölümünden kalan 0'a eþitse
+// yani çift bir sayý ise
+if( ekle % 2 == 0 )
+{
+// her buraya geldiðinde 'ekle' deðiþkenini 'dene' vectörünün
+// sonuna ekleyecek
+dene.push_back(ekle);
+}
+}
+
+// .size() ile vectörün eleman sayýsý dönüyor ve
+// biz o dönen deðeri eSayisi deðiþkenine atýyoruz
+int eSayisi = dene.size();
+
+for(int i = 0; i < eSayisi; i++)
+{
+cout << "dene[" << i << "]..: " << dene[i] << endl;
+}
+
+system("PAUSE");
+return 0;
+
+
+
+}*/
+//begin() ve end() gösterici diyebiliriz.Bunlar deafult olarak begin=vektorun ilk elemanýn  adresini  end ise 
+//eklenicek elemanýn adresini gösterir yani sondan bi fazlasýný (iterator turundeddir.)
+
+ 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#include<iostream>
+#include<iomanip>
+#include<vector>
+using namespace std;
+int main()
+{
+	//vector<int>dene;
+	/*
+	dene[0] = > dene.begin();
+	dene[1] = > dene.begin() + 1;
+	dene[2] = > dene.begin() + 2;
+	dene[3] = > dene.end() - 1;
+	*/
+	//begin ve end geriye iterator döndürür o dondurduðu iteratoru  int turunden tutabiliriz.
+    //Not: begin() + operatörü ile ilerler end() ise - operatörü ile ilerler.Birde iteratorlerin gösterdiði adrsteki veriyi çekmek istiyorsak göstericilerde olduðu gibi baþýna * yani mesela :
+	//cout << *dene.begin() << endl;
+	/*
+	vector<int> dene;
+
+	int ekle = 0;
+	int konum = 0;
+
+	// bu 'ekle' deðiþkenine eklenen sayý olduðu sürece döner
+	while (cin >> ekle)
+	{
+
+		// her buraya geldiðinde 'ekle' deðiþkenini 'dene' vectörünün
+		// sonuna ekleyecek
+		dene.push_back(ekle);
+	}
+	*/
+	/*
+	// dene.begin() ve dene.end()'i kolay okunmasý açýsýndan deðiþkenlere atadýk
+	vector<int>::iterator begin = dene.begin();
+	vector<int>::iterator end = dene.end();
+
+	// konsolu temizliyoruz
+	system("CLS");
+
+	cout << endl << " :..begin ile siralama..: " << endl;
+
+	// ne dedik: begin küçük olduðu sürece end'den; begin'in gösterdiði yeri 1 arttýr
+	for (; begin < end; begin++)
+	{
+		cout << "*dene.begin()+" << konum << "..: " << *begin << endl;
+		konum++;
+	}
+
+	// begin'in gösterdiði yeri eski konuma getiriyoruz yani 0. elemana çünkü bir döngüde daha lazým olacak
+	begin = begin - dene.size();
+
+	konum = 0;
+
+	// end'in gösterdiði yeri bir eksiltiyoruz çünkü ne demiþtik end son eleman'dan bir sonraki adresi gösteririr
+	// neden böyle yaptýk derseniz altta döngüde kullanmýþýz döngüde ilk o elemaný yazdýrmak isteyecek o elemanda
+	// biz gösterdiði yeri 1 eksilmemiþ olsaydýk son elemandan bir sonraki adres olacaktý bu yüzden RuntimeError olcaktý
+	end = end - 1;
+
+	cout << endl << " :..end ile siralama..: " << endl;
+
+	// ne dedik: end büyük veya eþit olduðu sürece begin'den end'in gösterdiði yeri 1 eksilt
+	for (; end >= begin; end--)
+	{
+		cout << "*dene.end()-" << konum << "..: " << *end << endl;
+		konum++;
+
+		// eðer end'in gösterdiði yer begin'in gösterdiði yere eþit ise:
+		// döngüden çýk
+		if (end == begin)
+			break;
+	}
+
+	cout << endl;
+
+	system("PAUSE");
+	return 0;
+	*/
+	vector<int> dene(5, 500);
+
+	int eleman = dene.size();
+
+	cout << "*++dene.begin() = 123'den Once: " << endl;
+
+	for (int i = 0; i < eleman; i++)
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+	// dene.begin() ++ yani gösterdiði yeri bir arttýrýp ordaki elemaný 123'e eþitliyoruz
+	vector<int>::iterator moruq = dene.begin();
+	*++moruq = 123;
+	cout << endl << "*++dene.begin() = 123'den Sonra: " << endl;
+
+	for (int i = 0; i < eleman; i++)
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+	//.front() :vectörün ilk elemanýný döndürür veya ilk elemanýna deðer atamamýza yarar:
+	//.back() :vectörün son elemanýný döndürür veya son elemanýna deðer atamamýza yarar:
+
+
+}
+
+
+
+
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+	/*
+	//at,clear,empty,erase,swap
+	//at: Dizinin verilen sayidaki elemanýný döndürür ayný []gibi iþ görür
+	vector<int>denem(5, 10);
+	denem.at(0) = 99;
+
+	//clear: Bu metod sadece elemanlarý siler kapasiteyi ellemez
+	denem.clear();
+	// 5 eleman oluþtur. O 5 elemana 0 deðerini atar
+	vector<int> dene(5);
+
+	cout << endl << ":.. .clear()'dan once 'dene' vectorunun hali ..: " << endl;
+
+	cout << "{" << endl;
+
+	for (int i = 0; i < dene.size(); i++)
+		cout << "\tdene[" << i << "]..: " << dene[i] << endl;
+
+	cout << "}" << endl;
+
+
+	// vectörümüzün elemanlarýný kaldýrýyoruz
+	dene.clear();
+
+
+	cout << endl << ":.. .clear()'dan sonra 'dene' vectorunun hali ..: " << endl;
+
+	cout << "{" << endl;
+
+	for (int i = 0; i < dene.size(); i++)
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+	//Buradan görülüyorki clear yapýnca kapasitesi dursana elemanlar 0 bile olmuyo default oluyo.
+	cout << "}" << endl << endl;
+
+	//.empty() : vectörün boþ olup olmadýðýný kontrol eder boþ ise true dolu ise false döndürür :
+	*/
+	vector<int> dene;
+
+	// vectörümüze elemanlar ekliyoruz
+	for (int i = 0; i < 10; i++)
+		dene.push_back(i + 10);
+
+	cout << endl << ":.. .erase()'den once ..:" << endl;
+
+	for (int i = 0; i < dene.size(); i++)
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+
+	// aþaðýda erase ile dene.begin() + 4'ün gösterdiði yerdeki elemaný siliyoruz
+	dene.erase(dene.begin() + 4);
+
+	cout << endl << ":.. .erase()'den sonra ..:" << endl;
+
+	for (int i = 0; i < dene.size(); i++)
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+
+	cout << endl;
+	//YANÝ 5Ý SÝLDÝK.
+	//
+	swap() : iki vectörü birbirleri arasýnda yer deðiþtirir yani A ve B vectörümüz var diyelim swap()'tan sonra A vectörü B'.ama tamamen yer deðiþtirir capacity felan
+
+		int main()
+	{
+			vector<int> dene(5);
+
+			vector<int> yeni(3, 200);
+
+			cout << endl << ":.. .swap()'dan once ..:" << endl << endl;
+
+			cout << "'dene' vectoru:" << endl;
+			for (int i = 0; i < dene.size(); i++)
+				cout << "dene[" << i << "]..: " << dene[i] << endl;
+
+			cout << endl << "'yeni' vectoru:" << endl;
+			for (int i = 0; i < yeni.size(); i++)
+				cout << "yeni[" << i << "]..: " << yeni[i] << endl;
+
+			// iki vectörü birbirleriyle yer deðiþtitdiriyoruz
+			dene.swap(yeni);
+
+
+			cout << endl << endl << ":.. .swap()'dan sonra ..:" << endl << endl;
+
+			cout << "'dene' vectoru:" << endl;
+			for (int i = 0; i < dene.size(); i++)
+				cout << "dene[" << i << "]..: " << dene[i] << endl;
+
+			cout << endl << "'yeni' vectoru:" << endl;
+			for (int i = 0; i < yeni.size(); i++)
+				cout << "yeni[" << i << "]..: " << yeni[i] << endl;
+
+			cout << endl;
+
+			system("PAUSE");
+			return 0;
+		}
+
+}
+
+
+
+
+
+
+
+--------------------------------------
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+	/*
+	vector<int>dene(5);//5 eleman oluþtur o 5 elemana 0 deðeri ata.
+	cout << "Clear'dan önce" << endl;
+	if (dene.empty())
+		cout << "Vector Bos" << endl;
+	else
+		cout << "Vector Dolu" << endl;
+	for (int i = 0; i < dene.size(); i++)
+	{
+		cout << "dene[" << i << "]=" << dene[i] << endl;
+	}
+	dene.clear();
+	cout << "Clear2dan Sonra" << endl;
+	if (dene.empty())
+		cout << "Vector Bos" << endl;
+	else
+		cout << "Vector Dolu" << endl;
+	for (int i = 0; i < dene.size(); i++)
+	{
+		cout << "dene[" << i << "]=" << dene[i] << endl;//Eleman yazdirmiyor.
+	}
+	//Gördüðümüz gibi clear vektorun içini boþaltýyor.
+	*/
+	//ERASE
+	/*
+	vector<int> dene;
+	cout << "Erase öncesi" << endl;
+	for (int i = 0; i < 10; i++)
+	{
+		dene.push_back(i + 10);
+		cout << "dene[" << i << "]=" << dene[i] << endl;
+	}
+	dene.erase(dene.begin() + 4,dene.end());//aralýk belirtmek þart deðil ama siler. 
+	cout << "Erase sonrasý" << endl;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << "dene[" << i << "]=" << dene[i] << endl;
+	}
+	*/
+	//SWAP
+	vector<int> dene(5,8);
+	vector<int>yeni(5, 6);
+	cout << endl << ":.. .swap()'dan once ..:" << endl << endl;
+
+	cout << "'dene' vectoru:" << endl;
+	for (int i = 0; i < dene.size(); i++)
+	{
+
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+		vector<int>::iterator begin = dene.begin();
+		cout << &dene[i]<<endl;
+	}
+
+	cout << endl << "'yeni' vectoru:" << endl;
+	for (int i = 0; i < yeni.size(); i++)
+	{
+
+		cout << "yeni[" << i << "]..: " << yeni[i] << endl;
+		cout << &yeni[i] << endl;
+	}
+	// iki vectörü birbirleriyle yer deðiþtitdiriyoruz
+	dene.swap(yeni);
+	cout << endl << endl << ":.. .swap()'dan sonra ..:" << endl << endl;
+
+	cout << "'dene' vectoru:" << endl;
+	for (int i = 0; i < dene.size(); i++)
+	{
+
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+		cout << &dene[i] << endl;
+	}
+
+	cout << endl << "'yeni' vectoru:" << endl;
+	for (int i = 0; i < yeni.size(); i++)
+	{
+
+		cout << "yeni[" << i << "]..: " << yeni[i] << endl;
+		cout << &yeni[i] << endl;
+	}
+
+	cout << endl;
+	
+}
+
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+	/*
+	//pop_back()
+	vector<int>dene;
+	dene.push_back(10);
+	dene.push_back(20);
+	dene.push_back(30);
+	dene.push_back(40);
+	cout << "Dene vektorunun ilk hali" << endl;
+	for (int i = 0; i < dene.size(); i++)
+	{
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+	}
+	dene.pop_back();//Sondaki elemaný siler.
+	cout << endl << endl << ":.. .pop_back()'den sonra 'dene' vectoru ..:" << endl << endl;
+
+	for (int i = 0; i < dene.size(); i++)
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+		*/
+	//asign()=Eski verileri silip yeni verileri eklemek için kullanýlýr.
+	//Not sadece  elemanlar üzerinde oynama yapýlýr capacity üzerinde ilgilenmez.
+	
+	/*vector<int>dene(5, 50);
+	vector<int>dene2(3, 10);
+
+	int i = 0;
+	int eleman = dene.size();
+	while (i < eleman)
+	{
+		cout << "dene[" << i << "]..: " << dene[i] << endl;
+		i++;
+	}
+	//(virgülün solu baþlangýç adresi, saðý bitiþ adresi)
+		// 'dene' vectöründeki elemenalarý temizle ve 'yeni' vectörünü
+		// 'dene' vectörüne kopyala
+	i = 0;
+		dene.assign(dene2.begin(), dene2.end());
+		while (i < eleman)
+		{
+			cout << "dene[" << i << "]..: " << dene[i] << endl;
+			i++;
+		}
+		*/
+	//.resize()=elemanlarýn alanlarýný ayarlar
+	//Not: mesela 3 elemanýmýz var diyelim biz resize ile 5 eleman dedik ozaman bizim elimizde 5 eleman olur yani extradan 2 eleman eklenmiþ olur ayrýca vectörün size'sinden küçük bir deðerle resize kullanýldýysa mesela bizim 5 elemanýmýz var resize ile 2 dedik yapacaðý þey sondan 3 elemaný kaldýracak extra biþey eklenmeyecek.
+	// aþaðýdan sonra 'dene' vectörünün hali = { 0, 0, 0 }
+	//vector<int> dene(3);
+
+	// aþaðýda 5 elemanlýk yapar extra bir alan eklenmiþ olursa o alanlara 15 deðerini atar
+	// aþaðýdan sonra 'dene' vectörünün hali = { 0, 0, 0, 15, 15 }
+	//dene.resize(5, 15);
+
+	// aþaðýda 7 elemanlýk yapar extra bir alan eklenmiþ olursa o alanlara default olarak 0 deðerini atar
+	// aþaðýdan sonra 'dene' vectörünün hali = { 0, 0, 0, 15, 15, 0, 0 }
+	//dene.resize(5, 15);
+
+	//system("PAUSE");
+	//return 0;
+	//.reserve() kapasiteyi arttýrmaya yarar düþüremez cünkü kapasite hep en maxta kalýr düþürmek istersek ayný kalýr.
+	/*vector<int>dene(5, 50);
+	dene.reserve(8);
+	for (int i = 0; i < dene.size(); i++)
+	{
+		cout << dene.at(i) << endl;//kapasite 8 ama 5 tane yazdýrýr.
+	}
+	*/
+	//.insert()=belirtilen yere belirtilen elemaný ekler saða kaydýrarak yapar eleman kaybetmez.
+	//dene.insert(dene.begin(),55);
+	// dene.begin() + 2'nin gösterdiði yere 3 tane 84 ekliyoruz
+	//dene.insert(dene.begin() + 2, 3, 84);
+
+	/*
+
+	Yukardaki insert() fonksiyonundan önce 'dene' vectörünün durumu:
+	dene[0] = 50;
+	dene[1] = 50;
+	dene[2] = 50;
+
+	Yukardaki insert() fonksiyonundan sonra 'dene' vectörünün durumu:
+	dene[0] = 50;
+	dene[1] = 50;
+	dene[2] = 84;
+	dene[3] = 84;
+	dene[4] = 84;
+	dene[5] = 50;
+
+	yani insert() napmýþ oldu: dene.begin()'in gösterdiði yere 67 deðerini ekledi
+
+
+	NOT: dene.begin() + 2 dene[2]'yi gösterir.
+}
+---------------------------------------------------------------------------------------------------------------------
+

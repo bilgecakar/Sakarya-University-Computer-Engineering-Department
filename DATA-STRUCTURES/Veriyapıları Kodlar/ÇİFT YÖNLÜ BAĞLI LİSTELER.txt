@@ -1,0 +1,112 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Node
+{
+public:
+	string harf;
+	Node*next;
+	Node*prev;
+	void insertA()//Araya eklemek
+	{
+	
+	}
+};
+Node*head = NULL;
+Node*finish = NULL;
+int staff = 0;
+void insert(string harfx)
+{
+	Node*newStaff = new Node;//Halayýmýza eklenecek yeni üye
+	newStaff->harf = harfx;
+	if (head == NULL)//Halayda hiçbir kimse yok ise eðer
+	{
+		//Siz bu konumda halayý baslatan kisisiniz
+		newStaff->prev = NULL;//Sizden önce kimse yok
+		newStaff->next = NULL;//Sizden sonrada kimse yok
+		head = newStaff;//Halay baþý sizsiniz.
+		finish = newStaff;//Halay	 sonuda sizsiniz.
+		finish->next = NULL;
+		head->prev = NULL;
+
+	}
+	else//Sona eleman eklemek 
+	{
+		//Burada halay sonu biz olacaðýz.
+		newStaff->prev = finish;////sizden onceki halaydaki son insan oluyor aslinda 
+		finish->next = newStaff;//O zaman biz halaysonundan sonraki kiþiyiz.
+		finish = newStaff;//Artýk halay sonu biziz.
+		finish->next = NULL;
+		head->prev = NULL;
+	}
+}
+
+void Yazdir()
+{
+	Node*gecici = head;
+	while (gecici != NULL)//Node un sonuna gelene kadar
+	{
+		cout << gecici->harf << endl;
+		gecici = gecici->next;
+	}
+}
+void insertA(int indeks, string harfx)
+{
+	Node*newStaff = new Node;
+	newStaff->harf = harfx;
+	Node*gecici = head;
+	for (int i = 0; i < indeks; i++)
+	{
+		gecici = gecici->next;
+	}//Halaya girceðimiz yere kadar geliyoruz.
+	newStaff->next = gecici->next;
+	gecici->next = newStaff;
+}
+Node*SondanCikar()
+{
+	//Halaydan cikmanin vakti geldi
+	finish = finish->prev;
+	finish->next = NULL;
+	return finish;
+}
+Node*AradanCikar(int indeks)
+{
+	Node*gecici = head;
+	for (int i = 0; i < indeks; i++)
+	{
+		gecici = gecici->next;
+	}//Halaya cikicagimiz yere kadar geliyoruz.
+	gecici = gecici->prev;
+	gecici->next = gecici->next->next;
+	return gecici;
+}
+Node*BastanCikar()
+{
+	//Halay basinin ciktigini düsüneceðiz þimdi.
+	//Ýlk olarak halayýn baþýný saðlama almalýyýz.Cünkü halay basýnýn adresini kaybedersek halayý kaybedereiz.
+	Node*gecici = head;
+	head = gecici->next;/*Halay basindan sonraki kisi*/
+	return gecici;
+}
+int main()
+{
+	Node*eleman = new Node;
+	insert("benim");
+	insert("adim");
+	insert("mert");
+	insert("senin");
+	insert("adin");
+	insert("ne");
+	insert("acaba");
+	insertA(3, "SANANE AMK");
+	Yazdir();
+	SondanCikar();
+	cout << "-------------------" << endl;
+	Yazdir();
+	AradanCikar(2);
+	cout << "-------------------" << endl;
+	Yazdir();
+	cout << "-------------------" << endl;
+	BastanCikar();
+	Yazdir();
+}

@@ -1,0 +1,138 @@
+cc++ OPERATOR SINIFI VE OSTREAM
+#include <iostream>
+using namespace std;
+struct vector
+{
+	double x;
+	double y;
+	double z;
+};
+vector operator * (double a, vector b)
+{
+	vector r;
+	r.x = a * b.x;
+	r.y = a * b.y;
+	r.z = a*  b.z;
+	return r;
+}
+ostream &operator<<(ostream&o, vector a)
+{
+	o << "<" << a.x << "," << a.y << "," << a.z << ">" << endl;
+	return o;
+}
+int main()
+{
+	vector k, m; // No need to type "struct vector"
+	k.x = 2; // Keep cool, soon you'll be able
+	k.y = -1; // to write k = vector (45, -4).
+	k.z = -3;
+	m =(2.12121*21.12)*k;
+	cout << m;
+;// Magic!
+	return 0;
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rnd = new Random();
+            double carpan2 = 1;
+            int n;
+            int a1;
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+            int[,]matris=new int[n,n];
+            for(int i=0;i<n;i++)
+            {
+                for(int j=0;j<n;j++)
+                {
+                    matris[i, j] = rnd.Next(0,4);
+                    Console.Write(matris[i, j] + " ");
+                }
+                Console.WriteLine();
+                
+            }
+            Console.WriteLine("**********MATRÝS ÝLK HALÝDÝR*********");
+            while (n > 1)
+            {
+                
+                
+
+                int a = 0;
+                int b = 0;//Sutun
+                int c = 1;
+                int d = 1;//sutun
+                    if (matris[0, 0] == 0)
+                    {
+                        int temp = matris[0, 0];
+                        matris[0, 0] = matris[1,1];
+                        matris[1, 1] = temp;
+                        Console.WriteLine("------DEGÝSTÝRME ÝSLEMÝ YAPÝLDÝ------");
+
+
+                        for (int k = 0; k < n; k++)
+                        {
+                            for (int l = 0; l < n; l++)
+                            {
+                                Console.Write(matris[k, l] + " ");
+                            }
+                            Console.WriteLine();
+                        }
+                    }
+                    Console.WriteLine("----------------------");
+                    a1 = matris[0, 0];
+                    double carpan1 = 1 / Math.Pow(a1, n - 2);
+                    carpan2 = carpan2 * carpan1;
+                    Console.WriteLine("|||||||||||||||| SON CARPAN=" + carpan2 + "|||||||||||");
+                n--;
+                int[,] matriss = new int[n, n];
+               
+                    for (int i = 0; i < n; i++)
+                    {
+
+                        for (int j = 0; j < n; j++)
+                        {
+                            //
+                            matriss[i, j] = matris[a, b] * matris[c, d] - matris[a, d] * matris[c, b];
+                            Console.Write(matriss[i, j] + " ");
+
+                            d++;
+                        }
+
+                        Console.WriteLine();
+                        c++;
+                        d = 1;
+
+
+                    }
+               
+                for(int i=0;i<n;i++)
+                {
+
+                    for (int j=0;j<n;j++)
+                    {
+                        matris[i, j] = matriss[i, j];
+                    }
+                }
+                Console.WriteLine();
+                Console.WriteLine();
+
+            }
+            double det = matris[0, 0] * carpan2;
+            Console.WriteLine("DETERMÝNANT=" + det);
+        }
+    }
+}
+

@@ -1,0 +1,4 @@
+Bu uygulamada make file kullanýlarak derlenmesine bir örnek verilmiþtir.
+Komut penceresinden dosyalarýn bulunduðu klasöre geldikten sonra,
+> mingw32-make
+yazýp uygulamayý derleyebilirsiniz.

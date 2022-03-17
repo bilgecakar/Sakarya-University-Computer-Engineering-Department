@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	/*Dinamik Bellek Yönetimi
+	Oluþturduðumuz deðiþkenler global deðiþkenler hariç derleyici tarafýndan stack te saklanýr.Etki alaný bittiðinde
+	derleyici tarafýndan otomatik olarak serbest býrakýlýr.
+	Etki Alaný={} içerisi etki alaný içerisindedir mesela þu olayda bu deðiþken hata verecektir. Cünkü yaþam süresi bitti.
+	int main()
+	{
+	int de = 98;
+
+	{
+
+	int yu = 32;
+	}
+
+
+	//aþaðýdaki hatalýdýr
+	cout << yu << endl;
+
+	system("PAUSE");
+	return 0;
+	}
+	NOT=Siz bu deðiþkenin adresini tutarak eriþmek istersenizde artýk o adreste o vardýr. Farklý bir þeyi deðiþtirebilirsiniz.
+	Ama buna derleyicinin kontolü altýnda olmayan bir alanda yaparsanýz anlattiðimiz senaryoyu gerçekleþtirebiliriz.Bu alanda
+	Heap oluyor.
+
+	Bellekte adreslerin saklanýmý:
+	KOMUT SATIRI VE ÇEVRE DEÐÝÞKENLERÝ
+	STACK
+	HEAP
+	ATANMAMIÞVERÝLER
+	ATANMIÞ VERÝLER
+	MAKÝNA KODLARI
+	::Bu sýraya göre saklanacaktýr.
+	Stack yüksek adres numarasýndan  deðiþkenin byte deðeri kadar düþerek saklanýr.
+	STACK VE HEAP ARASINDAKÝ FARKLAR
+	Stackte yerleþim sýralýdýr Heap te yerleþim düzensizdir.
+	Stackte kontrol derleyicidedir Heap te  kontrol programcýnýn elindedir.
+	Heap Belleðin nasýl iþlediðini görelim.
+	int* po = new int[5];
+	Böyle yaptýðýmýzda derleyici bellekten düþükten yükseðe doðru 20 bytelik yer arar.
+	Diyelim önümüzde 50byte yer var ve bu 50 byte nýn ikinci 10 byte ý dolu olsun.Heap böyle davranýr:
+	ilk 10 byte i yerleþtir dolu 10 byte ý atlar geri kalan 10 byte ý doldurur önündeki 20 byte de boþ kalýr. Düzensizdir.
+	HEAP BELLEÐÝ NASIL KULLANABÝLÝRÝZ:
+	New tanýmýný kullanýrýz. Derleyici new ý gördüðü an  bize heap bellek alaný  verir ve o adresi bizim iþaretcimize verir.
+	NOT=ÝÞARETCÝMÝZ STACK TE OLUÞUR..
+	Heap bellekte kontrol bizde olduðu için iþimiz bittiðinde  alaný boþaltmalýyýz.
+	delete:dizi olmayanlarý silmek için
+	delete[]:dizi olanlarý silmek için
+
+	int main()
+	{
+	int* po;
+
+	//etki alaný oluþturduk
+	{
+	po = new int;
+	*po = 123;
+
+	}
+
+	cout << "*po..: " << *po << endl;
+
+	//iþimiz bittiðinde serbest býrakalým
+	delete po;
+	}
+	Bu öörnekte görüyoruz ki Heap bellek kullandýðýmýz için yaþam alaný dýþýnda deðiþkenimizi kullanabiliyoruz.
+
+
+	*/
+	int*dizi = new int[5];
+	//Bu iþlemin tanýmý=Heap bellekten bana 20byte alan ver ve sonra o elemanýn baþlangýc adresini dizi iþaretcisine atamalýsýn.
+	for (int i = 0; i < 5; i++)//Dizimizin elemanlarýna deðer atadým.
+	{
+		dizi[i] = i*i;
+	}
+	int*yeni = new int[10];
+	for (int i = 0; i < 5; i++)
+	{
+		yeni[i] = dizi[i];
+	}
+	delete[] dizi;
+	dizi = yeni;//dizinin adresini yeniye atadik. artýk dizimiz 10 elemana sahip
+	delete[] dizi;
+	delete[] yeni;
+
+}

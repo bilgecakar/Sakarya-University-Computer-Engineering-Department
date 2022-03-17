@@ -1,0 +1,99 @@
+#include<iostream>
+#include<fstream>//Dosyalama kullanmak için eklediðimiz kütüphanedir.
+#include<iomanip>//setw yazi düzenleyicisini kullanmak için koyduk.
+
+using namespace std;
+int main()
+{
+
+	//ifstream okur ofstream yazar fstream ikisinide yapar.
+	fstream dosya;
+	dosya.open("Deneme.txt", ios::out | ios::in | ios::app);
+	//ios::app açtýðýmýz dosyanýn sonuna yeni birþey eklememizi saðlýyor.bunu yazmazsak her seferinde
+	//yeni bir bilgi girdiðimizde baþa yazacaktýr.
+	/*char text[100];
+	dosya >> text;//Boþluðu görene kadarýný alýr.
+	dosya << "Bu bir denemedir.";
+	cout << text;*/
+	dosya.setf(ios::left);//sola dayalý sekilde dosyaya yazdirdik.
+	dosya << setw(20) << "aaa" << setw(20) << "bbb" << setw(20) <<"123" << endl;
+	dosya << setw(20) << "kaskd" << setw(20) << "sadsad" << setw(20) << "999" << endl;
+	//Busekilde düzenlersek sola dayalý sekilde yazar.
+	dosya.close();
+}
+
+**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+#include<iostream>
+#include<fstream>//Dosyalama kullanmak için eklediðimiz kütüphanedir.
+#include<iomanip>//setw yazi düzenleyicisini kullanmak için koyduk.
+#include<string>
+using namespace std;
+class Ogrenci
+{
+public:
+	string Ad;
+	string Soyad;
+	string Numara;
+	int Sinif;
+	void BilgiGir()
+	{
+		cout.setf(ios::left);
+		cout <<setw(20)<< "Oðrencinin ismini giriniz:";
+		cin >> Ad;
+		cout << setw(20) << "Oðrencinin soyadini giriniz:";
+		cin >> Soyad;
+		cout << setw(20) << "Oðrencinin numarasini giriniz:";
+		cin >> Numara;
+		cout << setw(20) << "Oðrencinin sinif giriniz:";
+		cin >> Sinif;
+	}
+	void BilgiYazdir()
+	{
+		cout << setw(20) << "Oðrencinin ismi:"<<endl;
+		cout << setw(20) << "Oðrencinin soyadi:" << Soyad<<endl;
+		cout << setw(20) << "Oðrencinin numarasi:"<<Numara<<endl;
+		cout << setw(20) << "Oðrencinin sinifi:" <<Sinif<<endl;
+	}
+};
+class Okul
+{
+public:
+	Ogrenci Ogrenciler[100];
+	int ogrsayisi;
+	fstream dosya;
+	Okul()
+	{
+		ogrsayisi = 0;
+		dosya.open("Deneme.txt", ios::out | ios::in | ios::app);
+		dosya.setf(ios::left);
+	}
+	void OgrenciEkle()
+	{
+		Ogrenciler[ogrsayisi].BilgiGir();
+		Ogrenci o = Ogrenciler[ogrsayisi];
+		dosya << setw(20) << o.Ad << setw(20) << o.Soyad << setw(20) << o.Numara << setw(20) << o.Sinif << endl;
+	}
+	void OgrenciBul(string Numara)
+	{
+
+		Ogrenci A;
+		while (!dosya.eof ())
+		{
+
+			dosya >> A.Ad;
+			dosya >> A.Soyad;
+			dosya >> A.Numara;
+			dosya >> A.Sinif;
+			if (A.Numara == Numara)
+			{
+				A.BilgiYazdir();
+				break;
+			}
+		}
+	}
+};
+int main()
+{
+	Okul  sau;
+	sau.OgrenciBul("34");
+}

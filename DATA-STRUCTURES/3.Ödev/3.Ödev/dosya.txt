@@ -1,0 +1,9 @@
+Anakartlar AMD
+Bellekler DDR3L
+Bellekler DDR4
+Islemciler AMD
+Bellekler DDR
+Bellekler DDR2
+Anakartlar Intel
+Bellekler DDR3
+Islemciler IntelCore
